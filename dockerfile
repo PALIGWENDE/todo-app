@@ -1,5 +1,7 @@
-FROM node:12-alpine
-WORKDIR /app
+FROM node:14-alpine
+RUN apk add --no-cache git python3 make g++
+RUN git clone -q https://github.com/PALIGWENDE/todo-app.git
+WORKDIR /todo-app
 COPY . .
 RUN yarn install --production
 CMD ["node", "/app/src/index.js"]
